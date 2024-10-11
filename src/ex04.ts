@@ -8,8 +8,8 @@ interface Identifiable {
   id: number;
 }
 
-function mergeObjects(obj1, obj2) {
-  
+function mergeObjects<T extends Identifiable,U extends Partial<T>>(obj1:T, obj2:U) {
+  return { ...obj1, ...obj2 };
 }
 
 // Expected output:
