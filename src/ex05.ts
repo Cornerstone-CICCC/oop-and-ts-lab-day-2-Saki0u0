@@ -8,8 +8,19 @@ interface User {
   active: boolean;
 }
 
-function generateSummary(users) {
+function generateSummary(users:User[]): { activeCount: number; averageAge: number } {
+  let activeCount = 0;
+  let ageSum = 0;
+  for (const user of users) {
+    if (user.active) {
+      activeCount++;
+      ageSum += user.age;
+    }
+  }
 
+  const averageAge = activeCount > 0 ? ageSum / activeCount : 0;
+
+  return { activeCount, averageAge };
 }
 
 // Expected output:
