@@ -3,11 +3,13 @@
 // Return type: string.
 
 interface UserProfile {
-  
+  username:string
+  email:string
+  lastLogin?:Date;
 }
 
-function getLastLoginMessage(user) {
-  
+function getLastLoginMessage(user:UserProfile):string {
+  return user.lastLogin?.toString() ?? "No login recorded"; 
 }
 
 // Expected output:
