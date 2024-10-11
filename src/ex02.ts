@@ -7,8 +7,8 @@ interface Team {
   members: { name: string; role: string }[];
 }
 
-function updateTeam(team, updates) {
-
+function updateTeam(team:Team, updates:Partial<Team>):Team {
+  return {...team,...updates}
 }
 
 // Expected output:
