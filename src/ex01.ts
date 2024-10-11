@@ -5,9 +5,20 @@
 // - The function should have overloads for both the string and number types.
 // - Return type: string for string inputs, number for number inputs.
 
-
-function transformInput(x) {
-
+function transformInput(x:string):string
+function transformInput(x: number):number
+function transformInput(x:string | number):string | number {
+  if (typeof x === "string"){
+    return x.split("").reverse().join("");
+  }else if (typeof x === "number"){
+    let factorial = 1;
+    for(let i = 2; i <=x; i++){
+      factorial *= i
+    }
+    return factorial
+  }else{
+    throw new Error("Error");
+  }
 }
 
 // Expected output:
