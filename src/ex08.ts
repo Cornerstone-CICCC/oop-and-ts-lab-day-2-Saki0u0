@@ -9,14 +9,24 @@ interface Employee {
 }
 
 interface Company {
-
+  name:string;
+  address:string;
+  employees:Employee[];
 }
 
-function updateCompany(company, updates) {
-  
+function updateCompany(company:Company, updates:Partial<Company>):Company {
+  return {
+    ...company,
+    ...updates,
+    employees: updates.employees
+    ? updates.employees.map((updatedEmployee, index) => {
+        return { ...company.employees[index], ...updatedEmployee };
+      })
+    : company.employees
+  }
 }
 
 // Expected output:
 const company = { name: "TechCorp", address: "123 St", employees: [{ name: "Alice", role: "Developer", salary: 100000 }] };
-updateCompany(company, { employees: [{ name: "Alice", role: "Senior Developer" }] }) 
+updateCompany(company, { employees: [{ name: "Alice", role: "Senior Developer", salary: 100000 }] }) 
 // { name: "TechCorp", address: "123 St", employees: [{ name: "Alice", role: "Senior Developer", salary: 100000 }] }
