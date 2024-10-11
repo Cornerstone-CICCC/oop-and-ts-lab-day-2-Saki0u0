@@ -20,8 +20,9 @@ class Duck {
   }
 }
 
-function getCapabilities(duck) {
-  
+function getCapabilities(duck:Duck):void {
+  duck.fly();
+  duck.swim();
 }
 
 // Expected output:

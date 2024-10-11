@@ -2,8 +2,14 @@
 // The function should return a new object where the keys are renamed according to the map.
 // Return type: a new object with renamed keys.
 
-function renameKeys(obj, keyMap) {
-  
+function renameKeys(obj:Record<string,any>, keyMap:Record<string,string>) {
+  const newObj: Record<string, any> = {}; 
+  for (const key in obj) { 
+    const newKey = keyMap[key] || key; 
+    newObj[newKey] = obj[key]; 
+  }
+
+  return newObj; // 新しいオブジェクトを返す
 }
 
 // Expected output:
